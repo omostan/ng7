@@ -74,7 +74,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
     })
 </pre>
 
-5a.) In Service (e.g. data.service.ts) where it has to be used, import both *`Restangular, HttpClient, HttpErrorResponse, catchError, and map`*
+5a.) In Service (e.g. data.service.ts), import *`Restangular, HttpClient, HttpErrorResponse, catchError, and map`*
 
 <pre>
     import { HttpClient, HttpErrorResponse } from '@angular/common/http';
