@@ -83,9 +83,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 </pre>
 
 
-5b.) Create an instance of *`Restangular`* in the constructor
+5b.) Create an instance of *`HttpClient`* and *`Restangular`* in the constructor
 
-<pre>constructor(private restangular: Restangular) {}</pre>
+<pre>constructor(private http: HttpClient, private restangular: Restangular) {}</pre>
 
 5c.) Create a method (e.g. getUsers()) and getHttpUsers() to fetch data from RESTful service or other Web API service
 
