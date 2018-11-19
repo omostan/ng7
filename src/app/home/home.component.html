@@ -14,24 +14,52 @@
 
 <!-- <h1>Home</h1> -->
 
-
-<h3><u>Restangular Service Call: {{ totalRestResult }}</u></h3>
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- Ref: https://www.npmjs.com/package/ngx-pagination-->
+<!-- <h3><u>Restangular Service Call: {{ totalRestResult }}</u></h3>
 <div>
     <ul *ngIf="restangularUsers">
-        <li *ngFor="let user of restangularUsers">
+        <li *ngFor="let user of restangularUsers | paginate: { id: 'restUsers', itemsPerPage: 5, currentPage: p1 }">
             <img [src]="user.avatar" alt="{{ user.avatar }}">
             <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
         </li>
     </ul>
+    <pagination-controls id="restUsers" (pageChange)="p1 = $event" previousLabel="&#xfe64;" nextLabel="&#xfe65;" autoHide="true" responsive="true"></pagination-controls>
 </div>
-
-
 <h3><u>Http Service Call: {{ totalHttpResult }}</u></h3>
 <div>
     <ul *ngIf="httpUsers">
-        <li *ngFor="let user of httpUsers">
+        <li *ngFor="let user of httpUsers | paginate: { id: 'httpUsers', itemsPerPage: 5, currentPage: p2 }">
             <img [src]="user.avatar" alt="{{ user.avatar }}">
             <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
         </li>
     </ul>
+    <pagination-controls id="httpUsers" (pageChange)="p2 = $event" previousLabel="&#xfe64;" nextLabel="&#xfe65;" autoHide="true" responsive="true"></pagination-controls>
+</div> -->
+
+<!-- ////////////////////////////////////-->
+<!-- Ref: http://michaelbromley.github.io/ngx-pagination/#/advanced -->
+<h3><u>Restangular Service Call: {{ totalRestResult }}</u></h3>
+<div>
+    <ul *ngIf="restangularUsers">
+        <li *ngFor="let user of restangularUsers | paginate: config">
+            <img [src]="user.avatar" alt="{{ user.avatar }}">
+            <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
+        </li>
+    </ul>
+    <pagination-controls [id]="config.id" [maxSize]="maxSize" [directionLinks]="directionLinks" [autoHide]="autoHide" [responsive]="responsive" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel" [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+        [screenReaderPageLabel]="labels.screenReaderPageLabel" [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" (pageChange)="onPageChange($event)">
+    </pagination-controls>
+</div>
+<h3><u>Http Service Call: {{ totalHttpResult }}</u></h3>
+<div>
+    <ul *ngIf="httpUsers">
+        <li *ngFor="let user of httpUsers | paginate: config">
+            <img [src]="user.avatar" alt="{{ user.avatar }}">
+            <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
+        </li>
+    </ul>
+    <pagination-controls [id]="config.id" [maxSize]="maxSize" [directionLinks]="directionLinks" [autoHide]="autoHide" [responsive]="responsive" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel" [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+        [screenReaderPageLabel]="labels.screenReaderPageLabel" [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" (pageChange)="onPageChange($event)">
+    </pagination-controls>
 </div>

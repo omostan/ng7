@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RestangularModule } from 'ngx-restangular';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ export function RestangularConfigFactory(RestangularProvider) {
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     // import RestangularModule and use the exported RestangularConfigFactory
     RestangularModule.forRoot(RestangularConfigFactory)
   ],
