@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Restangular } from 'ngx-restangular';
-import { IUsers } from './interface/users.Interface';
-import { Observable, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
@@ -16,7 +15,7 @@ export class DataService {
  */
   getUsers() {
     // return this.restangular.all('users').doGET();
-    return this.restangular.all('users.json').doGET().pipe(map(data => {
+    return this.restangular.all('users').doGET().pipe(map(data => {
       return data;
     }),
     // "catchError" instead of "catch"
@@ -28,9 +27,9 @@ export class DataService {
 /**
  * GET method for HttpClient API service call
  */
-  getHttpUsers(): Observable<IUsers[]> {
+  getHttpUsers() {
     // return this.http.get('https://reqres.in/api/users');
-    return this.http.get<IUsers[]>('../assets/data/users.json').pipe(map(data => {
+    return this.http.get('http://localhost:3000/users').pipe(map(data => {
         return data;
       }),
       // "catchError" instead of "catch"

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +8,10 @@ import { throwError } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  restangularUsers: Array<any> = [];
-  httpUsers: Array<any> = [];
-  users: Array<any> = [];
-  total: number;
+  restangularUsers: any = [];
+  httpUsers: any = [];
+  totalRestResult: number;
+  totalHttpResult: number;
 
   constructor(private dataService: DataService) { }
 
@@ -23,11 +22,11 @@ export class HomeComponent implements OnInit {
 
   getUsers() {
     this.dataService.getUsers().subscribe(
-      data => {
-        data.data.forEach(user => {
+      (data:any []) => {
+        data.forEach(user => {
           if (user.id <= 10) {
             this.restangularUsers.push(user);
-            this.total = this.restangularUsers.length;
+            this.totalRestResult = this.restangularUsers.length;
           }
         });
       },
@@ -38,12 +37,11 @@ export class HomeComponent implements OnInit {
 
   getHttpUsers() {
     this.dataService.getHttpUsers().subscribe(
-      data => {
-        this.users.push(data);
-        this.users[0].data.forEach(user => {
-          if (user.id >= 11 && user.id <= 20) {
+      (data:any []) => {
+        data.forEach(user => {
+          if (user.id > 10 && user.id <= 20) {
           this.httpUsers.push(user);
-          this.total = this.httpUsers.length;
+          this.totalHttpResult = this.httpUsers.length;
           }
         });
       },
