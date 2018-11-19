@@ -1,0 +1,12 @@
+<header>
+    <div class="container">
+        <a [routerLink]="['']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }">{{ appTitle }}</a>
+        <nav>
+            <ul>
+                <li><a [routerLink]="['']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+                <li><a [routerLink]="['about']" routerLinkActive="router-link-active">About</a></li>
+                <li><a [routerLink]="['contact']" routerLinkActive="router-link-active">Contact us</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
