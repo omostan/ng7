@@ -30,13 +30,32 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 *`import { RestangularModule } from 'ngx-restangular'`*
 
-
-3.)  In module.ts, use RestangularProvider to configure the base URL for the REST-API service
+3a.) Create the bas URL in a separate sampleRestApi.ts file in the root folder
 
 <pre>
+    /** This method sets the url to get fake data for testing.
+     *  Ref: https://reqres.in/api/
+     *  A hosted REST-API ready to respond to AJAX requests.
+     *  It is used to test front-end against a real API.
+     *  GET, POST, PUT & DELETE are supported.
+     */
+    export function fakeData(): any {
+      return 'https://reqres.in/api/';
+    }
+</pre>
+
+3b.)  In module.ts, use RestangularProvider to configure the base URL for the REST-API service
+
+<pre>
+    import { fakeData } from './sampleRestApi';
+
+    /**
+     *
+     * @param RestangularProvider is used to configure the base URL for the REST-API service
+     */
     export function RestangularConfigFactory(RestangularProvider) {
-        RestangularProvider.setBaseUrl('http://localhost:4200/restservice.svc');
-        RestangularProvider.setDefaultHeaders({'Authorization': 'Bearer UDXPx-Xko0w4BRKajozCVy20X11MRZs1'})
+      RestangularProvider.setBaseUrl(fakeData());
+      RestangularProvider.setDefaultHeaders({'Authorization': 'Bearer V6vzEfEimH2PoiretEB7o0jBhp5ICk#d'});
     }
 </pre>
 
@@ -67,11 +86,8 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 7.) Create a method (e.g. getUsers()) and use this.restangular instance (in data.service.ts) to fetch data from RESTful service or other Web API service
 
 <pre>
-    import { Injectable } from '@angular/core';
     import { HttpClient, HttpErrorResponse } from '@angular/common/http';
     import { Restangular } from 'ngx-restangular';
-    import { IUsers } from './interface/users.Interface';
-    import { Observable, throwError } from 'rxjs';
     import { catchError, map } from 'rxjs/operators';
 
     @Injectable({
@@ -84,8 +100,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
      * GET method for Restangular API service call
      */
       getUsers() {
-        // return this.restangular.all('users').doGET();
-        return this.restangular.all('users.json').doGET().pipe(map(data => {
+        return this.restangular.all('users').doGET().pipe(map(data => {
           return data;
         }),
         // "catchError" instead of "catch"
@@ -97,9 +112,8 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
     /**
      * GET method for HttpClient API service call
      */
-      getHttpUsers(): Observable<IUsers[]> {
-        // return this.http.get('https://reqres.in/api/users');
-        return this.http.get<IUsers[]>('../assets/data/users.json').pipe(map(data => {
+      getHttpUsers() {
+        return this.http.get('https://reqres.in/api/users').pipe(map(data => {
             return data;
           }),
           // "catchError" instead of "catch"
