@@ -68,28 +68,28 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
             AppComponent,
         ],
         imports: [
-            // Import RestangularModule and use the default config factory
+            // import RestangularModule and use the exported RestangularConfigFactory
             RestangularModule.forRoot(RestangularConfigFactory),
         ]
     })
 </pre>
 
-5.) In the component (e.g. data.service.ts) where it has to be used, import *`Restangular`*
-
-<pre>import { Restangular } from 'ngx-restangular';</pre>
-
-
-6.) Create an instance of *`Restangular`* in the constructor
-
-<pre>constructor(private restangular: Restangular) {}</pre>
-
-7.) Create a method (e.g. getUsers()) and use this.restangular instance (in data.service.ts) to fetch data from RESTful service or other Web API service
+5a.) In Service (e.g. data.service.ts) where it has to be used, import both *`Restangular, HttpClient, HttpErrorResponse, catchError, and map`*
 
 <pre>
     import { HttpClient, HttpErrorResponse } from '@angular/common/http';
     import { Restangular } from 'ngx-restangular';
     import { catchError, map } from 'rxjs/operators';
+</pre>
 
+
+5b.) Create an instance of *`Restangular`* in the constructor
+
+<pre>constructor(private restangular: Restangular) {}</pre>
+
+5c.) Create a method (e.g. getUsers()) and getHttpUsers() to fetch data from RESTful service or other Web API service
+
+<pre>
     @Injectable({
       providedIn: 'root'
     })
@@ -126,7 +126,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
     }
 </pre>
 
-8.) Finally, call the methods from the home.component.ts
+6.) Finally, call the methods from the home.component.ts
 
 <pre>
     import { Component, OnInit } from '@angular/core';
