@@ -1,10 +1,38 @@
-header {
+/* header {
     background: #7700FF;
     .logo {
         font-weight: bold;
     }
     nav {
         justify-self: right;
+        div {
+            ul {
+                list-style-type: none;
+                margin: 0%;
+                padding: 0;
+                li {
+                    float: left;
+                    a {
+                        // padding: 1.5em;
+                        padding: 1em;
+                        text-transform: uppercase;
+                        font-size: .8em;
+                        &:hover {
+                            background: #8E2BFF;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .router-link-active {
+        background: #7700FF;
+        color: red;
+    }
+} */
+
+nav {
+    div {
         ul {
             list-style-type: none;
             margin: 0%;
@@ -16,14 +44,14 @@ header {
                     text-transform: uppercase;
                     font-size: .8em;
                     &:hover {
-                        background: #8E2BFF;
+                        background: dimgray;
                     }
                 }
             }
         }
     }
-    .router-link-active {
-        background: #7700FF;
-        color: red;
-    }
+}
+
+.router-link-active {
+    color: red;
 }

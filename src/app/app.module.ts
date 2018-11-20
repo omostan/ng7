@@ -1,3 +1,5 @@
+//#region imports 
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -10,6 +12,11 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { fakeData } from './sampleRestApi';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FooterComponent } from './footer/footer.component';
+
+//#endregion imports
+
+//#region RestangularConfigFactory 
 
 /**
  *
@@ -20,12 +27,17 @@ export function RestangularConfigFactory(RestangularProvider) {
   RestangularProvider.setDefaultHeaders({'Authorization': 'Bearer V6vzEfEimH2PoiretEB7o0jBhp5ICk#d'});
 }
 
+//#endregion RestangularConfigFactory
+
+//#region Register modules, imports and providers 
+
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     RoutingComponents,
-    NotFoundComponent
+    NotFoundComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -39,5 +51,8 @@ export function RestangularConfigFactory(RestangularProvider) {
   providers: [],
   bootstrap: [AppComponent]
 })
+
+//#endregion  Register modules, imports and providers 
+
 export class AppModule { }
 

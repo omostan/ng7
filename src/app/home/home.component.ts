@@ -7,27 +7,32 @@ import { PaginationInstance } from '../../../node_modules/ngx-pagination/';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
 
-  restangularUsers: any = [];
+  //#region variables and constants 
+
+restangularUsers: any = [];
   httpUsers: any = [];
   totalRestResult: number;
   totalHttpResult: number;
   p: number[] = [];
 
-  // Start ngx-pagination
+//#endregion variables and constants 
 
-  public filter: string = '';
+  //#region ngx-pagination
+
+public filter: string = '';
   public maxSize: number = 7;
   public directionLinks: boolean = true;
   public autoHide: boolean = false;
   public responsive: boolean = false;
   public config: PaginationInstance = {
         id: 'advanced',
-        itemsPerPage: 10,
+        itemsPerPage: 3,
         currentPage: 1
   };
-  
+
   public labels: any = {
     previousLabel: 'Previous',
     nextLabel: 'Next',
@@ -41,18 +46,24 @@ onPageChange(number: number) {
   this.config.currentPage = number;
 }
 
-// End ngx-pagination
+//#endregion ngx-pagination
 
-  constructor(private dataService: DataService) { }
+constructor(private dataService: DataService) { }
+
+//#region ngOnInit 
 
   ngOnInit() {
     this.getUsers();
     this.getHttpUsers();
   }
 
-  getUsers() {
+//#endregion ngOnInit
+
+  //#region getUsers 
+
+getUsers() {
     this.dataService.getUsers().subscribe(
-      (data:any []) => {
+      (data: any []) => {
         data.forEach(user => {
           if (user.id <= 25) {
             this.restangularUsers.push(user);
@@ -65,7 +76,11 @@ onPageChange(number: number) {
     );
   }
 
-  getHttpUsers() {
+//#endregion getUsers
+
+  //#region getHttpUsers 
+
+getHttpUsers() {
     this.dataService.getHttpUsers().subscribe(
       (data:any []) => {
         data.forEach(user => {
@@ -79,4 +94,8 @@ onPageChange(number: number) {
       () => console.log(this.httpUsers)
     );
   }
+
+//#endregion getHttpUsers
+
+
 }

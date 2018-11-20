@@ -10,6 +10,9 @@ import { catchError, map } from 'rxjs/operators';
 export class DataService {
 
   constructor(private http: HttpClient, private restangular: Restangular) {  }
+
+//#region getUsers 
+
 /**
  * GET method for Restangular API service call
  */
@@ -24,6 +27,11 @@ export class DataService {
     })
     );
   }
+
+//#endregion getUsers
+  
+//#region getHttpUsers 
+
 /**
  * GET method for HttpClient API service call
  */
@@ -39,4 +47,8 @@ export class DataService {
       })
     );
    }
+
+//#endregion getHttpUsers
+
+
 }
