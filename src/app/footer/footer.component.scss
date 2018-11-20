@@ -1,12 +1,15 @@
 footer {
-    background-color: royalblue;
+    background-color: #001D49;
     div {
+        display: table;
+        width: 100%;
+        padding: 1em;
+        text-transform: none;
+        font-size: .8em;
+        color: white;
         p {
-            width: 100%;
-            padding: 1em;
-            text-transform: none;
-            font-size: .8em;
-            color: white;
+            display: table-cell;
+            vertical-align: middle;
         }
     }
 }

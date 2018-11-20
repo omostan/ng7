@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppInfo } from '../app.settings'
 
 @Component({
   selector: 'app-nav',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  // tslint:disable-next-line:no-inferrable-types
-  appTitle: string = 'NG7 Tutorials';
+  isLoggedIn: boolean = true;  
+  envFontSize: string = AppInfo.FontSize;
+  envColor: string    = AppInfo.FontColor;
+  webserver: string   = AppInfo.WebServer;
+  appHeading: string  = AppInfo.Title;
 
   constructor() { }
 

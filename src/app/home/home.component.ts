@@ -10,27 +10,27 @@ import { PaginationInstance } from '../../../node_modules/ngx-pagination/';
 
 export class HomeComponent implements OnInit {
 
-  //#region variables and constants 
+//#region variables and constants 
 
 restangularUsers: any = [];
-  httpUsers: any = [];
-  totalRestResult: number;
-  totalHttpResult: number;
-  p: number[] = [];
+httpUsers: any = [];
+totalRestResult: number;
+totalHttpResult: number;
+p: number[] = []; 
 
 //#endregion variables and constants 
 
-  //#region ngx-pagination
+//#region ngx-pagination
 
 public filter: string = '';
-  public maxSize: number = 7;
-  public directionLinks: boolean = true;
-  public autoHide: boolean = false;
-  public responsive: boolean = false;
-  public config: PaginationInstance = {
-        id: 'advanced',
-        itemsPerPage: 3,
-        currentPage: 1
+public maxSize: number = 7;
+public directionLinks: boolean = true;
+public autoHide: boolean = false;
+public responsive: boolean = false;
+public config: PaginationInstance = {
+  id: 'advanced',
+  itemsPerPage: 10,
+  currentPage: 1
   };
 
   public labels: any = {
@@ -39,7 +39,7 @@ public filter: string = '';
     screenReaderPaginationLabel: 'Pagination',
     screenReaderPageLabel: 'page',
     screenReaderCurrentLabel: `You're on page`
-};
+  };
 
 onPageChange(number: number) {
   console.log('change to page', number);
@@ -55,6 +55,7 @@ constructor(private dataService: DataService) { }
   ngOnInit() {
     this.getUsers();
     this.getHttpUsers();
+    //this.getAppInfo();
   }
 
 //#endregion ngOnInit

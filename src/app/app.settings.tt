@@ -1,0 +1,93 @@
+//#region Copyright
+
+/*****************************************************************************************
+*                                     ______________________________________________     *
+*                              o O   |                                              |    *
+*                     (((((  o      <                     LicDB                     |    *
+*                    ( o o )         |______________________________________________|    *
+* ------------oOOO-----(_)-----OOOo----------------------- http://10.2.169.55:84 ------- *
+*                Name: app.settings.ts                                                   *
+*              Author: Stanley Omoregie                                                  *
+*     Completion date: 06.09.2016                                                        *
+*       Modified date: 28.10.2017                                                        *
+*  Last Modified date: 07.07.2018                                                        *
+*           CopyRight: @2016 Novomatic Gaming Industries GmbH                            *
+*                  .oooO  Oooo.                                                          *
+*                  (   )  (   )                                                          *
+* ------------------\ (----) /---------------------------------------------------------- *
+*                    \_)  (_/                                                            *
+*****************************************************************************************/
+
+//#endregion Copyright
+
+/*global app*/
+/*jshint -W030*/
+
+<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Configuration" #>
+<#@ output extension=".ts" #><#
+
+/***************************************************************************
+* GENERAL SETTINGS                                                         *
+****************************************************************************
+
+	/** change ONLY these next three settings below for the respective web servers **/
+
+	const bool isDev      = true;  // always set to false before publishing
+	const bool isEnduser  = false; // Live (SALT) = true  | Test Enduser = true | Test = false
+	const bool isTest     = true;  // Live (SALT) = false | Test Enduser = true | Test = true
+
+	/** START - DO NOT CHANGE ANY OF THESE SETTINGS BELOW, EXCEPT YOU KNOW WHAT YOU ARE DOING !!! **/
+
+	const string testServer = isEnduser ? "(Test Enduser)" : "(Test)";
+
+/***************************************************************************
+ * DEVELOPMENT SETTINGS                                           *
+ ***************************************************************************/
+
+	const string devUserName    = "";
+	const string devUserPW      = "";
+	const string devUserRoles   = "";
+	const string devURL         = "http://localhost:50850/RESTServices/RESTService.svc/";
+	const string devRefDate     = "new Date(2015, 9, 1, 0, 0, 0)";
+
+/***************************************************************************
+ * DEPLOYMENT SETTINGS                                            *
+ ***************************************************************************/
+
+	const string deployUserName    = "";
+	const string deployUserPW      = "";
+	const string deployUserRoles   = "";
+	const string deployURL         = "/Service/RESTServices/RESTService.svc/";
+	const string deployRefDate     = "new Date()";
+
+/**************************************************************************/ #>
+
+	/** END **/
+
+export const AppInfo = {
+    Project    : 'LicDB',
+		Title      : '<#= isTest ? "Welcome to Novomatic License Database" : "Submission and Licensing Tool" #>',
+		Author     : 'Ing. Stanley Omoregie',
+    Company    : 'Novomatic Gaming Industries',
+		Department : 'CMS / IT-AM',
+		Version    : 'v1.0.0.93 <#= isDev?"DEV":"" #>', // change the version number as required!
+		Copyright  : 'Copyright © 2015 Novomatic AG. All Rights Reserved',
+		WebServer  : '<#= isTest ? testServer : "(SALT)" #>',
+    FontSize   : '0.5em',
+		FontColor  : '<#= isEnduser ? "Red" : "darkorange" #>'
+}
+
+/** START - DO NOT CHANGE ANY OF THESE SETTINGS BELOW, EXCEPT YOU KNOW WHAT YOU ARE DOING !!! **/
+
+export const GLOBAL_ServerAddress = { value: '<#= isDev?devURL:deployURL #>' }
+export const GLOBAL_ShowDebugButton = { value: <#= isDev.ToString().ToLower() #> }
+export const GLOBAL_UserName = { value: '<#= isDev?devUserName:deployUserName #>' }
+export const GLOBAL_UserPW = { value: '<#= isDev?devUserPW:deployUserPW #>' }
+export const GLOBAL_UserRoles = { value: '<#= isDev?devUserRoles:deployUserRoles #>' }
+export const GLOBAL_isLoggedIn = { value: false }
+export const GLOBAL_ReferenceDate = { value: <#= isDev?devRefDate:deployRefDate #>}
+
+	/** END **/
