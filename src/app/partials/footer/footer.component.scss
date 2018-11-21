@@ -4,10 +4,12 @@ footer {
     div {
         display: table;
         width: 100%;
-        padding: 1em;
+        height: 2.5em;
+        padding: .632em 0 .632em 0;
         text-transform: none;
-        font-size: .8em;
+        font-size: .862em;
         color: white;
+        z-index: 1;
         p {
             display: table-cell;
             vertical-align: middle;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service'
-import { AppInfo } from '../app.settings';
+import { DataService } from '../../services/data.service'
+import { AppInfo } from '../../app.settings';
 import { environment } from 'src/environments/environment';
 
 @Component({

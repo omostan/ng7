@@ -3,9 +3,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Restangular } from 'ngx-restangular';
-import { throwError, Observable, of } from 'rxjs';
+import { throwError, Observable, of, config } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { IUsers } from './interface/users.Interface';
+import { IUsers } from '../interface/users.Interface';
 
 //#endregion imports
 

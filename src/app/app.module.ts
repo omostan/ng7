@@ -26,13 +26,13 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RestangularModule } from 'ngx-restangular';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { GLOBAL_ServerAddress } from './app.settings';
 import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { FooterComponent } from './footer/footer.component';
+import { NavComponent } from './partials/nav/nav.component';
+import { NotFoundComponent } from './partials/not-found/not-found.component';
+import { FooterComponent } from './partials/footer/footer.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //#endregion imports
 
@@ -64,9 +64,9 @@ export function RestangularConfigFactory(RestangularProvider) {
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxPaginationModule,
     // import RestangularModule and use the exported RestangularConfigFactory
-    RestangularModule.forRoot(RestangularConfigFactory)
+    RestangularModule.forRoot(RestangularConfigFactory),
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

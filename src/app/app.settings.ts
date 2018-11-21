@@ -67,7 +67,7 @@
     export const GLOBAL_UserName = { value: '' }
     export const GLOBAL_UserPW = { value: '' }
     export const GLOBAL_UserRoles = { value: '' }
-    export const GLOBAL_isLoggedIn = { value: false }
+    export const GLOBAL_isLoggedIn = { value: true }
     export const GLOBAL_ReferenceDate = { value: new Date(2015, 9, 1, 0, 0, 0)}
     
 /** END **/

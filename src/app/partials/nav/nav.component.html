@@ -23,9 +23,9 @@
         </button>
         <div class="collapse navbar-collapse navbar-btn" id="collapsibleNavbar">
             <ul class="nav navbar-nav" *ngIf="isLoggedIn">
-                <li><button type="button" class="btn btn-sm"><a [routerLink]="['']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">Home</a></button></li>
-                <li><button type="button" class="btn btn-sm"><a [routerLink]="['about']" routerLinkActive="router-link-active">About</a></button></li>
-                <li><button type="button" class="btn btn-sm"><a [routerLink]="['contact']" routerLinkActive="router-link-active">Contact</a></button></li>
+                <li><button type="button" class="btn btn-lg btn-default"><a [routerLink]="['']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">Submission</a></button></li>
+                <li><button type="button" class="btn btn-lg btn-default"><a [routerLink]="['about']" routerLinkActive="router-link-active">Administration</a></button></li>
+                <li><button type="button" class="btn btn-lg btn-default"><a [routerLink]="['contact']" routerLinkActive="router-link-active">Hardware</a></button></li>
             </ul>
         </div>
     </nav>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppInfo } from '../app.settings'
+import { AppInfo, GLOBAL_isLoggedIn } from '../../app.settings'
 
 @Component({
   selector: 'app-nav',
@@ -8,7 +8,7 @@ import { AppInfo } from '../app.settings'
 })
 export class NavComponent implements OnInit {
 
-  isLoggedIn: boolean = true;  
+  isLoggedIn: boolean = GLOBAL_isLoggedIn.value;  
   envFontSize: string = AppInfo.FontSize;
   envColor: string    = AppInfo.FontColor;
   webserver: string   = AppInfo.WebServer;

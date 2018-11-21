@@ -42,18 +42,19 @@
 <div>
     <h3><u>Restangular Service Call: {{ totalRestResult }}</u></h3>
     <div>
-        <pagination-controls [id]="config.id" [maxSize]="maxSize" [directionLinks]="directionLinks" [autoHide]="autoHide" [responsive]="responsive" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel" [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+        <!-- <pagination-controls [id]="config.id" [maxSize]="maxSize" [directionLinks]="directionLinks" [autoHide]="autoHide" [responsive]="responsive" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel" [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
             [screenReaderPageLabel]="labels.screenReaderPageLabel" [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" (pageChange)="onPageChange($event)">
-        </pagination-controls>
+        </pagination-controls> -->
+        <ngb-pagination [collectionSize]="restangularUsers.length" [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange($event)"></ngb-pagination>
         <ul *ngIf="restangularUsers">
-            <li *ngFor="let user of restangularUsers | paginate: config">
+            <li *ngFor="let user of restangularUsers | slice: pageSize | slice: 0:itemsPerPage">
                 <img [src]="user.avatar" alt="{{ user.avatar }}">
                 <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
             </li>
         </ul>
     </div>
 
-    <h3><u>Http Service Call: {{ totalHttpResult }}</u></h3>
+    <!-- <h3><u>Http Service Call: {{ totalHttpResult }}</u></h3>
     <div>
         <pagination-controls [id]="config.id" [maxSize]="maxSize" [directionLinks]="directionLinks" [autoHide]="autoHide" [responsive]="responsive" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel" [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
             [screenReaderPageLabel]="labels.screenReaderPageLabel" [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" (pageChange)="onPageChange($event)">
@@ -64,5 +65,5 @@
                 <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
             </li>
         </ul>
-    </div>
+    </div> -->
 </div>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
-import { PaginationInstance } from '../../../node_modules/ngx-pagination/';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -16,37 +15,13 @@ restangularUsers: any = [];
 httpUsers: any = [];
 totalRestResult: number;
 totalHttpResult: number;
-p: number[] = []; 
+currentPage = 1;
+itemsPerPage = 5;
+pageSize: number;
+
+
 
 //#endregion variables and constants 
-
-//#region ngx-pagination
-
-public filter: string = '';
-public maxSize: number = 7;
-public directionLinks: boolean = true;
-public autoHide: boolean = false;
-public responsive: boolean = false;
-public config: PaginationInstance = {
-  id: 'advanced',
-  itemsPerPage: 2,
-  currentPage: 1
-  };
-
-  public labels: any = {
-    previousLabel: '<',
-    nextLabel: '>',
-    screenReaderPaginationLabel: 'Pagination',
-    screenReaderPageLabel: 'page',
-    screenReaderCurrentLabel: `You're on page`
-  };
-
-onPageChange(number: number) {
-  console.log('change to page', number);
-  this.config.currentPage = number;
-}
-
-//#endregion ngx-pagination
 
 constructor(private dataService: DataService) { }
 
@@ -98,5 +73,12 @@ getHttpUsers() {
 
 //#endregion getHttpUsers
 
+//#region onPageChange 
+
+public onPageChange(pageNum: number): void {
+  this.pageSize = this.itemsPerPage*(pageNum - 1);
+}
+
+//#endregion onPageChange
 
 }
