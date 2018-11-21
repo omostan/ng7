@@ -10,10 +10,10 @@
         </div>
     </nav>
 </header> -->
-<header>
+<header class="jumbotron">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <a class="navbar-brand" [routerLink]="['']">
-            <img class="novo-logo-bar img-responsive" src="../../assets/images/novo_logo.png" alt="Novomatic Gaming Industries" /> {{ appHeading }} <span [ngStyle]="{ 'color': envColor, 'font-size': envFontSize }">{{ webserver }}</span>
+            <img class="novo-logo-bar img-responsive" src="../../assets/images/novo_logo.png" alt="Novomatic AG." /> {{ appHeading }} <span [ngStyle]="{ 'color': envColor, 'font-size': envFontSize }">{{ webserver }}</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="sr-only">Toggle navigation</span>
@@ -22,10 +22,10 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse navbar-btn" id="collapsibleNavbar">
-            <ul class="nav navbar-nav buttons-left" *ngIf="isLoggedIn">
-                <li class="btn btn-default btn-sm"><a [routerLink]="['']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
-                <li class="btn btn-default btn-sm"><a [routerLink]="['about']" routerLinkActive="router-link-active">About</a></li>
-                <li class="btn btn-default btn-sm"><a [routerLink]="['contact']" routerLinkActive="router-link-active">Contact us</a></li>
+            <ul class="nav navbar-nav" *ngIf="isLoggedIn">
+                <li><button type="button" class="btn btn-sm"><a [routerLink]="['']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">Home</a></button></li>
+                <li><button type="button" class="btn btn-sm"><a [routerLink]="['about']" routerLinkActive="router-link-active">About</a></button></li>
+                <li><button type="button" class="btn btn-sm"><a [routerLink]="['contact']" routerLinkActive="router-link-active">Contact</a></button></li>
             </ul>
         </div>
     </nav>

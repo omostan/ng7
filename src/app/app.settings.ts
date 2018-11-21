@@ -35,7 +35,7 @@
         Version    : 'v1.0.0.93', // change the version number as required!
         Copyright  : 'Copyright Ⓒ 2015 Novomatic AG. All Rights Reserved',
         WebServer  : '(Test)',
-        FontSize   : '0.5em',
+        FontSize   : '0.7em',
         FontColor  : 'darkorange'
     }
     

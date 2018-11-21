@@ -29,13 +29,13 @@ public autoHide: boolean = false;
 public responsive: boolean = false;
 public config: PaginationInstance = {
   id: 'advanced',
-  itemsPerPage: 10,
+  itemsPerPage: 2,
   currentPage: 1
   };
 
   public labels: any = {
-    previousLabel: 'Previous',
-    nextLabel: 'Next',
+    previousLabel: '<',
+    nextLabel: '>',
     screenReaderPaginationLabel: 'Pagination',
     screenReaderPageLabel: 'page',
     screenReaderCurrentLabel: `You're on page`
