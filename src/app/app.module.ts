@@ -24,7 +24,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RestangularModule } from 'ngx-restangular';
 import { GLOBAL_ServerAddress } from './app.settings';
 import { AppRoutingModule, RoutingComponents } from './app-routing.module';
@@ -63,6 +63,7 @@ export function RestangularConfigFactory(RestangularProvider) {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     // import RestangularModule and use the exported RestangularConfigFactory
     RestangularModule.forRoot(RestangularConfigFactory),

@@ -40,21 +40,24 @@
 <!-- ////////////////////////////////////-->
 <!-- Ref: http://michaelbromley.github.io/ngx-pagination/#/advanced -->
 <div>
-    <h3><u>Restangular Service Call: {{ totalRestResult }}</u></h3>
-    <div>
-        <!-- <pagination-controls [id]="config.id" [maxSize]="maxSize" [directionLinks]="directionLinks" [autoHide]="autoHide" [responsive]="responsive" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel" [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
-            [screenReaderPageLabel]="labels.screenReaderPageLabel" [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" (pageChange)="onPageChange($event)">
-        </pagination-controls> -->
-        <ngb-pagination [collectionSize]="restangularUsers.length" [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange($event)"></ngb-pagination>
-        <ul *ngIf="restangularUsers">
-            <li *ngFor="let user of restangularUsers | slice: pageSize | slice: 0:itemsPerPage">
-                <img [src]="user.avatar" alt="{{ user.avatar }}">
-                <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
-            </li>
-        </ul>
+    <h3><u>Restangular Service Call: {{ restangularUsers.length }}</u></h3>
+    <div class="col-6 input-group">
+        <div class="col-5 input-group-addon">
+            <ngb-pagination [collectionSize]="restangularUsers.length" [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange($event)"></ngb-pagination>
+        </div>
+        <div class="col-1 input-group-addon">
+            <input class="input-sm text-center" type="number" [min]="1" [max]="restangularUsers.length" name="pageSize" id="pageSize" [(ngModel)]="itemsPerPage" (onClick)="changePagesize($event)">
+        </div>
     </div>
-
-    <!-- <h3><u>Http Service Call: {{ totalHttpResult }}</u></h3>
+    <ul *ngIf="restangularUsers">
+        <li *ngFor="let user of restangularUsers | slice: pageSize | slice: 0:itemsPerPage">
+            <img [src]="user.avatar" alt="{{ user.avatar }}">
+            <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
+        </li>
+    </ul>
+    <pre><span></span>Page: {{ currentPage }} / {{numPages}}</pre>
+</div>
+<!-- <h3><u>Http Service Call: {{ totalHttpResult }}</u></h3>
     <div>
         <pagination-controls [id]="config.id" [maxSize]="maxSize" [directionLinks]="directionLinks" [autoHide]="autoHide" [responsive]="responsive" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel" [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
             [screenReaderPageLabel]="labels.screenReaderPageLabel" [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" (pageChange)="onPageChange($event)">
@@ -66,4 +69,3 @@
             </li>
         </ul>
     </div> -->
-</div>

@@ -13,13 +13,10 @@ export class HomeComponent implements OnInit {
 
 restangularUsers: any = [];
 httpUsers: any = [];
-totalRestResult: number;
-totalHttpResult: number;
 currentPage = 1;
-itemsPerPage = 5;
+itemsPerPage: number = 5;
 pageSize: number;
-
-
+numPages: any;
 
 //#endregion variables and constants 
 
@@ -41,9 +38,9 @@ getUsers() {
     this.dataService.getUsers().subscribe(
       (data: any []) => {
         data.forEach(user => {
-          if (user.id <= 25) {
+          if (user.id <= 50) {
             this.restangularUsers.push(user);
-            this.totalRestResult = this.restangularUsers.length;
+            this.numPages = Math.ceil(this.restangularUsers.length / this.itemsPerPage);
           }
         });
       },
@@ -62,7 +59,6 @@ getHttpUsers() {
         data.forEach(user => {
           if (user.id > 25 && user.id <= 50) {
           this.httpUsers.push(user);
-          this.totalHttpResult = this.httpUsers.length;
           }
         });
       },
@@ -77,6 +73,14 @@ getHttpUsers() {
 
 public onPageChange(pageNum: number): void {
   this.pageSize = this.itemsPerPage*(pageNum - 1);
+  this.currentPage = pageNum;
+}
+
+/**
+ * changePagesize
+pageSize: number */
+public changePagesize(num: number): void {
+  this.itemsPerPage = this.pageSize + num;
 }
 
 //#endregion onPageChange

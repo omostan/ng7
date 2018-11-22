@@ -15,7 +15,7 @@ export class AppComponent {
     setTheme('bs4');
     config.size = 'sm';
     config.boundaryLinks = true;
-    // config.pageSize = 10;
+    // config.pageSize = 5;
     config.maxSize = 7;
     config.rotate = true;
     config.ellipses = false;
