@@ -46,7 +46,7 @@
             <ngb-pagination [collectionSize]="restangularUsers.length" [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange($event)"></ngb-pagination>
         </div>
         <div class="col-1 input-group-addon">
-            <input class="input-sm text-center" type="number" [min]="1" [max]="restangularUsers.length" name="pageSize" id="pageSize" [(ngModel)]="itemsPerPage" (onClick)="changePagesize($event)">
+            <input class="input-sm text-center" type="number" [min]="5" [max]="restangularUsers.length" step="5" [(ngModel)]="itemsPerPage" (onClick)="changePagesize($event)">
         </div>
     </div>
     <ul *ngIf="restangularUsers">
