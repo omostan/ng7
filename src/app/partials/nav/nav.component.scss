@@ -1,6 +1,6 @@
 /* header {
     background: #7700FF;
-    .logo {
+    .novo-logo-bar {
         font-weight: bold;
     }
     nav {
@@ -32,22 +32,59 @@
 } */
 
 nav {
-    background: #F8F8F8 !important;
+    background: #ffffff !important;
+    margin-bottom: 0;
+    padding-left: 0em;
+    margin-bottom: 0;
+    list-style: none;
     div {
+        border: none;
         ul {
             list-style-type: none;
-            margin: 0%;
+            margin: 0 0 0 10em;
             padding: 0;
             li {
-                float: left;
-                padding: 3px;
+                position: relative;
+                display: block;
+                float: right;
+                padding: .1em;
                 a {
-                    padding: 1.5em;
+                    position: relative;
+                    display: block;
+                    padding: 0.938em;
+                    color: #777777;
                     text-transform: capitalize;
                     text-decoration: none;
-                    font-size: 1.2em;
+                    text-shadow: 0 1px 0 #fff;
+                    background-image: -webkit-linear-gradient(top, #fff 0, #e0e0e0 100%);
+                    background-image: -o-linear-gradient(top, #fff 0, #e0e0e0 100%);
+                    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e0e0e0));
                     &:hover {
-                        color: bisque;
+                        background: transparent !important;
+                        color: #555;
+                        border-radius: 3px;
+                    }
+                }
+                .router-link-active {
+                    background-image: -webkit-linear-gradient(top, #dbdbdb 0, #e2e2e2 100%);
+                    background-image: -o-linear-gradient(top, #dbdbdb 0, #e2e2e2 100%);
+                    background-image: -webkit-gradient(linear, left top, left bottom, from(#dbdbdb), to(#e2e2e2));
+                    background-image: linear-gradient(to bottom, #dbdbdb 0, #e2e2e2 100%);
+                    background-repeat: repeat-x;
+                    -webkit-box-shadow: inset 0 3px 9px #000;
+                    -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, .075);
+                    box-shadow: inset 0 3px 9px #000;
+                    box-shadow: inset 0 3px 9px rgba(0, 0, 0, .075);
+                    color: red;
+                    background-color: #e7e7e7;
+                    border-radius: .4em;
+                }
+                .navbar-nav {
+                    li {
+                        a {
+                            padding-top: 150px;
+                            padding-bottom: 15px;
+                        }
                     }
                 }
             }
@@ -55,8 +92,24 @@ nav {
     }
 }
 
-.router-link-active {
-    color: red;
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+    background-color: lightgray;
+    text-shadow: 0 1px 0 #fff;
+    background-image: -webkit-linear-gradient(top, #fff 0, #e0e0e0 100%);
+    background-image: -o-linear-gradient(top, #fff 0, #e0e0e0 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e0e0e0));
+}
+
+.btn-outline-secondary {
+    border-color: #dddddd !important;
+    &:hover {
+        background: transparent !important;
+        // color: #F1F1F1;
+    }
 }
 
 .novo-logo-bar {
@@ -65,22 +118,22 @@ nav {
     margin: 0 10px 0 0;
 }
 
-
-/* .navbar-default {
-    margin-bottom: 0;
-    background-image: linear-gradient(rgb(250, 250, 250) 0, rgb(248, 248, 248) 100%);
-}
-
-.navbar-text {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.buttons-left {
-    float: left;
-} */
-
 .navbar-brand {
+    width: 440px;
+    font-size: 1.2em;
     font-weight: bold;
     color: #777777 !important;
+}
+
+#projectUpdate {
+    position: relative;
+    margin-right: 100px;
+    float: right;
+    margin-top: 15px;
+    font-style: italic;
+    color: #228b22;
+    width: 300px;
+    height: 16px;
+    text-align: center;
+    word-break: normal;
 }
