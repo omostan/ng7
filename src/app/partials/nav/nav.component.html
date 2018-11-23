@@ -10,8 +10,7 @@
         </div>
     </nav>
 </header> -->
-<header>
-    <!-- <nav class="navbar navbar-expand-sm bg-dark navbar fixed-top">
+<!-- <nav class="navbar navbar-expand-sm bg-dark navbar fixed-top">
         <a class="navbar-brand" [routerLink]="['']">
             <img class="novo-logo-bar img-responsive" src="../../assets/images/novo_logo.png" alt="Novomatic AG." /> {{ appHeading }} <span [ngStyle]="{ 'color': envColor, 'font-size': envFontSize }">{{ webserver }}</span>
         </a>
@@ -30,6 +29,7 @@
         </div>
     </nav> -->
 
+<header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <a class="navbar-brand" [routerLink]="['']"><img class="novo-logo-bar img-responsive" src="../../assets/images/novo_logo.png" alt="Novomatic AG." /> {{ appHeading }} <span [ngStyle]="{ 'color': envColor, 'font-size': envFontSize }">{{ webserver }}</span></a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,11 +41,10 @@
                 <li><button type="button" class="btn btn-outline-secondary"><a [routerLink]="['about']" routerLinkActive="router-link-active">Administration</a></button></li>
                 <li><button type="button" class="btn btn-outline-secondary"><a [routerLink]="['contact']" routerLinkActive="router-link-active">Hardware</a></button></li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <!-- <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> -->
         </div>
     </nav>
-
 </header>

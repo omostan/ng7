@@ -1,70 +1,83 @@
-<!-- <h1 [ngClass]="{
-  'gray': h1Style,
-  'large': !h1Style
-}">Home</h1> -->
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- Ref: https://stackoverflow.com/questions/41223400/how-to-implement-bootstrap-4-for-angular-2-ngb-pagination/53418465#53418465 -->
+<div class="tab-content">
+    <div class="col-12 input-group">
+        <div class="col-6 input-group">
+            <div class="col-5 input-group-addon">
+                <ngb-pagination [collectionSize]="restangularUsers.length" #numPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
+            </div>
+            <div class="col-1 input-group-addon">
+                <input class="input-sm text-center" type="number" [min]="10" [max]="restangularUsers.length" step="1" [(ngModel)]="itemsPerPage" (onClick)="changePagesize(pageSize)">
+            </div>
+        </div>
+        <div class="col-6 input-group">
+            <div class="col-3 input-group-addon float-md-left">
+                <button class="btn btn-outline-primary my-2 my-sm-0" (click)="onClick()">New Submission</button>
+            </div>
+            <div class="col-3 input-group-addon float-md-right">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Global Filter...">
+                    <!-- <div class="col-1 float-md-right">
+                        <button class=" btn btn-outline-success my-2 my-sm-0" type="submit ">Search</button>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+    <ul *ngIf="restangularUsers ">
+        <li *ngFor="let user of restangularUsers | slice: pageSize | slice: 0:itemsPerPage ">
+            <!-- <img [src]="user.avatar " alt="{{ user.avatar }} ">
+            <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p> -->
+        </li>
+    </ul>
+    <pre><span class="float-md-left ">Page: {{ currentPage }} / {{numPages.pageCount}}</span><span class="float-md-right ">Found items: {{ itemsPerPage }} / {{ restangularUsers.length }}</span></pre>
+</div>
+<!-- /////////////////////////////////////////////////////////// -->
 
-<!-- <h1 [style.color]="h1Style ? 'gray' : 'black'">Home</h1> -->
+<!-- <h1 [ngClass]="{ 'gray': h1Style, 'large': !h1Style } ">Home</h1> -->
 
-<!-- <h1 [ngStyle]="{
-  'color': h1Style ? 'gray' : 'black',
-  'font-size': !h1Style ? '1em' : '4em'
-}">Home</h1>
+<!-- <h1 [style.color]="h1Style ? 'gray' : 'black' ">Home</h1> -->
 
-<button (click)="firstClick()">Click me</button> -->
+<!-- <h1 [ngStyle]="{ 'color': h1Style ? 'gray' : 'black', 'font-size': !h1Style ? '1em' : '4em' } ">Home</h1>
+
+<button (click)="firstClick() ">Click me</button> -->
 
 <!-- <h1>Home</h1> -->
 
-<!-- /////////////////////////////////////////////////////////// -->
+
 <!-- Ref: https://www.npmjs.com/package/ngx-pagination-->
 <!-- <h3><u>Restangular Service Call: {{ totalRestResult }}</u></h3>
 <div>
-    <ul *ngIf="restangularUsers">
-        <li *ngFor="let user of restangularUsers | paginate: { id: 'restUsers', itemsPerPage: 5, currentPage: p1 }">
-            <img [src]="user.avatar" alt="{{ user.avatar }}">
+    <ul *ngIf="restangularUsers ">
+        <li *ngFor="let user of restangularUsers | paginate: { id: 'restUsers', itemsPerPage: 5, currentPage: p1 } ">
+            <img [src]="user.avatar " alt="{{ user.avatar }} ">
             <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
         </li>
     </ul>
-    <pagination-controls id="restUsers" (pageChange)="p1 = $event" previousLabel="&#xfe64;" nextLabel="&#xfe65;" autoHide="true" responsive="true"></pagination-controls>
+    <pagination-controls id="restUsers " (pageChange)="p1=$ event " previousLabel="&#xfe64; " nextLabel="&#xfe65; " autoHide="true " responsive="true "></pagination-controls>
 </div>
 <h3><u>Http Service Call: {{ totalHttpResult }}</u></h3>
 <div>
-    <ul *ngIf="httpUsers">
-        <li *ngFor="let user of httpUsers | paginate: { id: 'httpUsers', itemsPerPage: 5, currentPage: p2 }">
-            <img [src]="user.avatar" alt="{{ user.avatar }}">
+    <ul *ngIf="httpUsers ">
+        <li *ngFor="let user of httpUsers | paginate: { id: 'httpUsers', itemsPerPage: 5, currentPage: p2 } ">
+            <img [src]="user.avatar " alt="{{ user.avatar }} ">
             <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
         </li>
     </ul>
-    <pagination-controls id="httpUsers" (pageChange)="p2 = $event" previousLabel="&#xfe64;" nextLabel="&#xfe65;" autoHide="true" responsive="true"></pagination-controls>
+    <pagination-controls id="httpUsers " (pageChange)="p2=$ event " previousLabel="&#xfe64; " nextLabel="&#xfe65; " autoHide="true " responsive="true "></pagination-controls>
 </div> -->
 
 <!-- ////////////////////////////////////-->
 <!-- Ref: http://michaelbromley.github.io/ngx-pagination/#/advanced -->
-<div class="container-fluid">
-    <!-- <h3><u>Restangular Service Call: {{ restangularUsers.length }}</u></h3> -->
-    <div class="col-6 input-group">
-        <div class="col-5 input-group-addon">
-            <ngb-pagination [collectionSize]="restangularUsers.length" [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
-        </div>
-        <div class="col-1 input-group-addon">
-            <input class="input-sm text-center" type="number" [min]="5" [max]="restangularUsers.length" step="1" [(ngModel)]="itemsPerPage" (onClick)="changePagesize(pageSize)">
-        </div>
-    </div>
-    <ul *ngIf="restangularUsers">
-        <li *ngFor="let user of restangularUsers | slice: pageSize | slice: 0:itemsPerPage">
-            <img [src]="user.avatar" alt="{{ user.avatar }}">
-            <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
-        </li>
-    </ul>
-    <pre><span class="float-md-left">Page: {{ currentPage }} / {{numPages}}</span><span class="float-md-right">Found items: {{ itemsPerPage }} / {{ restangularUsers.length }}</span></pre>
-</div>
 <!-- <h3><u>Http Service Call: {{ totalHttpResult }}</u></h3>
     <div>
-        <pagination-controls [id]="config.id" [maxSize]="maxSize" [directionLinks]="directionLinks" [autoHide]="autoHide" [responsive]="responsive" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel" [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
-            [screenReaderPageLabel]="labels.screenReaderPageLabel" [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" (pageChange)="onPageChange($event)">
+        <pagination-controls [id]="config.id " [maxSize]="maxSize " [directionLinks]="directionLinks " [autoHide]="autoHide " [responsive]="responsive " [previousLabel]="labels.previousLabel " [nextLabel]="labels.nextLabel
+                        " [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel "
+            [screenReaderPageLabel]="labels.screenReaderPageLabel " [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel " (pageChange)="onPageChange($event) ">
         </pagination-controls>
-        <ul *ngIf="httpUsers">
-            <li *ngFor="let user of httpUsers | paginate: config">
-                <img [src]="user.avatar" alt="{{ user.avatar }}">
+        <ul *ngIf="httpUsers ">
+            <li *ngFor="let user of httpUsers | paginate: config ">
+                <img [src]="user.avatar " alt="{{ user.avatar }} ">
                 <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
             </li>
         </ul>

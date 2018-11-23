@@ -14,9 +14,9 @@ export class HomeComponent implements OnInit {
 restangularUsers: any = [];
 httpUsers: any = [];
 currentPage = 1;
-itemsPerPage: number = 5;
+itemsPerPage: number = 10;
 pageSize: number;
-numPages: any;
+ChangePageSize: boolean;
 
 //#endregion variables and constants 
 
@@ -40,7 +40,6 @@ getUsers() {
         data.forEach(user => {
           if (user.id <= 50) {
             this.restangularUsers.push(user);
-            this.numPages = Math.ceil(this.restangularUsers.length / this.itemsPerPage);
           }
         });
       },
@@ -81,6 +80,7 @@ public onPageChange(pageNum: number): void {
 pageSize: number */
 public changePagesize(num: number): void {
   this.itemsPerPage = this.pageSize + num;
+  this.ChangePageSize = true;
 }
 
 //#endregion onPageChange
