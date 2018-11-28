@@ -1,0 +1,18 @@
+footer {
+    font-family: Helvetica neue, Helvetica, Arial, sans-serif;
+    background-color: #001D49;
+    div {
+        display: table;
+        width: 100%;
+        height: 2.5em;
+        padding: .632em 0 .632em 0;
+        text-transform: none;
+        font-size: .862em;
+        color: white;
+        // z-index: 1;
+        p {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+}

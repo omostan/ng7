@@ -1,0 +1,50 @@
+<!-- <header class="fixed-top">
+    <nav class="nav navbar">
+        <a class="navbar-brand" [routerLink]="['']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }">{{ appTitle }}</a>
+        <div>
+            <ul>
+                <li><a [routerLink]="['']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+                <li><a [routerLink]="['about']" routerLinkActive="router-link-active">About</a></li>
+                <li><a [routerLink]="['contact']" routerLinkActive="router-link-active">Contact us</a></li>
+            </ul>
+        </div>
+    </nav>
+</header> -->
+<!-- <nav class="navbar navbar-expand-sm bg-dark navbar fixed-top">
+        <a class="navbar-brand" [routerLink]="['']">
+            <img class="novo-logo-bar img-responsive" src="../../assets/images/novo_logo.png" alt="Novomatic AG." /> {{ appHeading }} <span [ngStyle]="{ 'color': envColor, 'font-size': envFontSize }">{{ webserver }}</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse navbar-btn" id="collapsibleNavbar">
+            <ul class="nav navbar-nav" *ngIf="isLoggedIn">
+                <li><button type="button" class="btn btn-group-lg btn-lg btn-default"><a [routerLink]="['']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">Submission</a></button></li>
+                <li><button type="button" class="btn btn-group-lg btn-lg btn-default"><a [routerLink]="['about']" routerLinkActive="router-link-active">Administration</a></button></li>
+                <li><button type="button" class="btn btn-group-lg btn-lg btn-default"><a [routerLink]="['contact']" routerLinkActive="router-link-active">Hardware</a></button></li>
+            </ul>
+        </div>
+    </nav> -->
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" [routerLink]="['']"><img class="novo-logo-bar img-responsive" src="../../assets/images/novo_logo.png" alt="Novomatic AG." /> {{ appHeading }} <span [ngStyle]="{ 'color': envColor, 'font-size': envFontSize }">{{ webserver }}</span></a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0" *ngIf="isLoggedIn">
+                <li><button type="button" class="btn btn-outline-secondary"><a [routerLink]="['']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">Submission</a></button></li>
+                <li><button type="button" class="btn btn-outline-secondary"><a [routerLink]="['about']" routerLinkActive="router-link-active">Administration</a></button></li>
+                <li><button type="button" class="btn btn-outline-secondary"><a [routerLink]="['contact']" routerLinkActive="router-link-active">Hardware</a></button></li>
+            </ul>
+            <!-- <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form> -->
+        </div>
+    </nav>
+</header>

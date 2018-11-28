@@ -1,0 +1,159 @@
+<!-- /////////////////////////////////////////////////////////// -->
+<!-- Ref: https://stackoverflow.com/questions/41223400/how-to-implement-bootstrap-4-for-angular-2-ngb-pagination/53418465#53418465 -->
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" [routerLink]="['']"><img class="novo-logo-bar img-responsive" src="../../assets/images/novo_logo.png" alt="Novomatic AG." /> {{ appHeading }} <span [ngStyle]="{ 'color': envColor, 'font-size': envFontSize }">{{ webserver }}</span></a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0" *ngIf="isLoggedIn">
+                <li><button type="button" class="btn btn-outline-secondary"><a [routerLink]="['']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">Submission</a></button></li>
+                <li><button type="button" class="btn btn-outline-secondary"><a [routerLink]="['about']" routerLinkActive="router-link-active">Administration</a></button></li>
+                <li><button type="button" class="btn btn-outline-secondary"><a [routerLink]="['contact']" routerLinkActive="router-link-active">Hardware</a></button></li>
+            </ul>
+        </div>
+    </nav> -->
+<div id="pageControls" class="col-12 tab-content">
+    <div class="col-12 input-group">
+        <!-- <div class="col-1 input-group-addon">
+            <ng-multiselect-dropdown [data]="restangularUsers" [(ngModel)]="selectedUsers" [settings]="userSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+        </div>
+        <div class="col-1 input-group-addon">
+            <ng-multiselect-dropdown [data]="dropdownList" [(ngModel)]="selectedItems" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+        </div>
+        <div class="col-1 input-group-addon">
+            <ng-multiselect-dropdown [data]="dropdownList" [(ngModel)]="selectedItems" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+        </div> -->
+        <div class="col-3 input-group-addon">
+            <ngb-pagination [collectionSize]="restangularUsers.length" #numPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
+        </div>
+        <div class="col-1 input-group-addon">
+            <input class="input-sm text-center" type="number" [min]="10" [max]="restangularUsers.length" step="1" [(ngModel)]="itemsPerPage" (onClick)="changePagesize(pageSize)">
+        </div>
+        <div class="col-3 input-group-addon">
+            <button class="btn btn-outline-primary my-2 my-sm-0" (click)="onClick()">New Submission</button>
+        </div>
+        <div class="col-2 input-group-addon">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Global Filter...">
+            </form>
+        </div>
+    </div>
+</div>
+<div id="mainBody" class="container-fluid">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Avatar</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="input-group-addon">
+                        <ng-multiselect-dropdown [data]="restangularUsers" [(ngModel)]="selectedUsers" [settings]="userSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                        </ng-multiselect-dropdown>
+                    </div>
+                </td>
+                <td>
+                    <div class="input-group-addon">
+                        <ng-multiselect-dropdown [data]="restangularUsers" [(ngModel)]="selectedUsers" [settings]="userSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                        </ng-multiselect-dropdown>
+                    </div>
+                </td>
+                <td>
+                    <div class="input-group-addon">
+                        <ng-multiselect-dropdown [data]="restangularUsers" [(ngModel)]="selectedUsers" [settings]="userSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                        </ng-multiselect-dropdown>
+                    </div>
+                </td>
+                <td>
+                    <div class="input-group-addon">
+                        <ng-multiselect-dropdown [data]="restangularUsers" [(ngModel)]="selectedUsers" [settings]="userSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                        </ng-multiselect-dropdown>
+                    </div>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of restangularUsers | slice: pageSize | slice: 0:itemsPerPage ">
+                <th scope="row">{{ user.id }}</th>
+                <td><img [src]="user.avatar " alt="{{ user.avatar }} "></td>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                    <div id="fixedFooter">
+                        <pre><span class="float-md-left">Page: {{ currentPage }} / {{numPages.pageCount}}</span><span class="float-md-right">Found items: {{ itemsPerPage }} / {{ restangularUsers.length }}</span></pre>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<!-- <ul *ngIf="restangularUsers ">
+                <li *ngFor="let user of restangularUsers | slice: pageSize | slice: 0:itemsPerPage ">
+                    <img [src]="user.avatar " alt="{{ user.avatar }} ">
+                    <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
+                </li>
+            </ul> -->
+
+
+<!-- /////////////////////////////////////////////////////////// -->
+
+<!-- <h1 [ngClass]="{ 'gray': h1Style, 'large': !h1Style } ">Home</h1> -->
+
+<!-- <h1 [style.color]="h1Style ? 'gray' : 'black' ">Home</h1> -->
+
+<!-- <h1 [ngStyle]="{ 'color': h1Style ? 'gray' : 'black', 'font-size': !h1Style ? '1em' : '4em' } ">Home</h1>
+
+<button (click)="firstClick() ">Click me</button> -->
+
+<!-- <h1>Home</h1> -->
+
+
+<!-- Ref: https://www.npmjs.com/package/ngx-pagination-->
+<!-- <h3><u>Restangular Service Call: {{ totalRestResult }}</u></h3>
+<div>
+    <ul *ngIf="restangularUsers ">
+        <li *ngFor="let user of restangularUsers | paginate: { id: 'restUsers', itemsPerPage: 5, currentPage: p1 } ">
+            <img [src]="user.avatar " alt="{{ user.avatar }} ">
+            <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
+        </li>
+    </ul>
+    <pagination-controls id="restUsers " (pageChange)="p1=$ event " previousLabel="&#xfe64; " nextLabel="&#xfe65; " autoHide="true " responsive="true "></pagination-controls>
+</div>
+<h3><u>Http Service Call: {{ totalHttpResult }}</u></h3>
+<div>
+    <ul *ngIf="httpUsers ">
+        <li *ngFor="let user of httpUsers | paginate: { id: 'httpUsers', itemsPerPage: 5, currentPage: p2 } ">
+            <img [src]="user.avatar " alt="{{ user.avatar }} ">
+            <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
+        </li>
+    </ul>
+    <pagination-controls id="httpUsers " (pageChange)="p2=$ event " previousLabel="&#xfe64; " nextLabel="&#xfe65; " autoHide="true " responsive="true "></pagination-controls>
+</div> -->
+
+<!-- ////////////////////////////////////-->
+<!-- Ref: http://michaelbromley.github.io/ngx-pagination/#/advanced -->
+<!-- <h3><u>Http Service Call: {{ totalHttpResult }}</u></h3>
+    <div>
+        <pagination-controls [id]="config.id " [maxSize]="maxSize " [directionLinks]="directionLinks " [autoHide]="autoHide " [responsive]="responsive " [previousLabel]="labels.previousLabel " [nextLabel]="labels.nextLabel
+        " [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel "
+            [screenReaderPageLabel]="labels.screenReaderPageLabel " [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel " (pageChange)="onPageChange($event) ">
+        </pagination-controls>
+        <ul *ngIf="httpUsers ">
+            <li *ngFor="let user of httpUsers | paginate: config ">
+                <img [src]="user.avatar " alt="{{ user.avatar }} ">
+                <p>{{ user.id }}. {{ user.first_name }} {{ user.last_name }}</p>
+            </li>
+        </ul>
+    </div> -->
