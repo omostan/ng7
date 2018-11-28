@@ -29,10 +29,11 @@ import { RestangularModule } from 'ngx-restangular';
 import { GLOBAL_ServerAddress } from './app.settings';
 import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavComponent } from './partials/nav/nav.component';
-import { NotFoundComponent } from './partials/not-found/not-found.component';
-import { FooterComponent } from './partials/footer/footer.component';
+import { NavComponent } from './components/nav/nav.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 //#endregion imports
 
@@ -67,7 +68,8 @@ export function RestangularConfigFactory(RestangularProvider) {
     ReactiveFormsModule,
     // import RestangularModule and use the exported RestangularConfigFactory
     RestangularModule.forRoot(RestangularConfigFactory),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
