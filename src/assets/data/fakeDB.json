@@ -449,5 +449,15 @@
         "ip_address": "90.255.58.28",
         "avatar": "https://robohash.org/aliquamnonmolestiae.png?size=50x50&set=set1",
         "car": "500E"
+    }],
+
+    "appInfo": [{
+        "Project": "LicDB",
+        "ProductTitle": "Welcome to Novomatic License Database",
+        "Author": "Ing. Stanley Omoregie",
+        "Company": "Novomatic Gaming Industries",
+        "Department": "CMS / IT-AM",
+        "Version": "v1.0.0.93",
+        "Copyright": "Copyright Ⓒ 2015 Novomatic AG. All Rights Reserved"
     }]
 }

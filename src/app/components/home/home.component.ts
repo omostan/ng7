@@ -17,7 +17,7 @@ currentPage = 1;
 itemsPerPage: number = 10;
 pageSize: number;
 ChangePageSize: boolean;
-
+appInfo: any [];
 dropdownList: any = [];
 selectedItems: any = [];
 dropdownSettings: any = {};
@@ -33,7 +33,6 @@ constructor(private dataService: DataService) { }
   ngOnInit() {
     this.getUsers();
     this.getHttpUsers();
-    //this.getAppInfo();
 
     //#region scrollHandle for table header
 
@@ -100,7 +99,7 @@ window.onload = function(){
 getUsers() {
     this.dataService.getUsers().subscribe(
       (data: any []) => {
-        data.forEach(user => {
+        data.forEach((user: any) => {
           if (user.id <= 50) {
             this.restangularUsers.push(user);
           }
@@ -118,7 +117,7 @@ getUsers() {
 getHttpUsers() {
     this.dataService.getHttpUsers().subscribe(
       (data:any []) => {
-        data.forEach(user => {
+        data.forEach((user: any) => {
           if (user.id > 25 && user.id <= 50) {
           this.httpUsers.push(user);
           }
