@@ -35,7 +35,7 @@ constructor(private dataService: DataService) { }
     this.getHttpUsers();
     //this.getAppInfo();
 
-    //#region scrollHandle 
+    //#region scrollHandle for table header
 
 window.onload = function(){
       var tableCont = document.querySelector('#mainBody')
@@ -51,7 +51,7 @@ window.onload = function(){
       tableCont.addEventListener('scroll',scrollHandle)
     }
 
-//#endregion
+  //#endregion scrollHandle for table header
     
     this.dropdownList = [
       { item_id: 1, item_text: 'Mumbai' },
