@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { DataService } from '../../services/data.service';
+import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
 
 restangularUsers: any = [];
 httpUsers: any = [];
-currentPage = 1;
+currentPage: number;
 itemsPerPage: number = 10;
 pageSize: number;
 ChangePageSize: boolean;
@@ -26,13 +27,16 @@ userSettings: any = {};
 
 //#endregion variables and constants 
 
-constructor(private dataService: DataService) { }
+constructor(@Inject(SESSION_STORAGE) private storage: StorageService, private dataService: DataService) { }
 
 //#region ngOnInit 
 
   ngOnInit() {
     this.getUsers();
     this.getHttpUsers();
+
+    const savedPageNum = this.storage.get("savedPageNum");
+    this.currentPage = savedPageNum !== null ? savedPageNum : 1;
 
     //#region scrollHandle for table header
 
@@ -135,14 +139,17 @@ getHttpUsers() {
 public onPageChange(pageNum: number): void {
   this.pageSize = this.itemsPerPage*(pageNum - 1);
   this.currentPage = pageNum;
+  this.storage.set("savedPageNum", this.currentPage);
 }
 
 /**
  * changePagesize
 pageSize: number */
 public changePagesize(num: number): void {
-  this.itemsPerPage = this.pageSize + num;
+  const savedItemsPerPage = this.storage.get("savedItemsPerPage");
+  this.itemsPerPage = savedItemsPerPage !== null ? savedItemsPerPage : this.pageSize + num;
   this.ChangePageSize = true;
+  this.storage.set("savedItemsPerPage", num);
 }
 
 

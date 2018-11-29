@@ -34,6 +34,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { StorageServiceModule } from 'angular-webstorage-service';
 
 //#endregion imports
 
@@ -69,7 +70,8 @@ export function RestangularConfigFactory(RestangularProvider) {
     // import RestangularModule and use the exported RestangularConfigFactory
     RestangularModule.forRoot(RestangularConfigFactory),
     NgbModule.forRoot(),
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    StorageServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]

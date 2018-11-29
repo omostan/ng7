@@ -63,7 +63,6 @@ getAppInfo() {
         this.department = info.Department;
         this.version    = info.Version;
         this.copyright  = info.Copyright;
-        this.appInfo.push(info);
       })
       this.appInfo = data;
     },
