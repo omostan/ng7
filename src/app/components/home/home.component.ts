@@ -19,10 +19,6 @@ itemsPerPage: number = 10;
 pageSize: number;
 ChangePageSize: boolean;
 appInfo: any [];
-dropdownList: any = [];
-selectedItems: any = [];
-dropdownSettings: any = {};
-
 userSettings: any = {};
 
 //#endregion variables and constants 
@@ -55,20 +51,10 @@ window.onload = function(){
     }
 
   //#endregion scrollHandle for table header
-    
-    this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
-    ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
 
-    this.userSettings = {
+    //#region userSettings 
+
+this.userSettings = {
       idField: 'id',
       textField: 'first_name',
       selectAllText: 'Select All',
@@ -81,19 +67,8 @@ window.onload = function(){
       placeholder: 'Select'
     }
 
-    this.dropdownSettings = {
-      singleSelection: true,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 1,
-      allowSearchFilter: true,
-      searchPlaceholderText: 'Filter...',
-      closeDropDownOnSelection: true,
-      clearSearchFilter: true,
-      placeholder: 'Select'
-    };
+//#endregion userSettings 
+
   }
 
 //#endregion ngOnInit
